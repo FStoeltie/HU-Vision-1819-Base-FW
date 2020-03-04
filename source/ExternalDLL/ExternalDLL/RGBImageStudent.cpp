@@ -32,7 +32,7 @@ void RGBImageStudent::set(const RGBImageStudent &other) {
 }
 
 void RGBImageStudent::setPixel(int x, int y, RGB pixel) {
-	RGB_pixel_data[x + (y * RGBImage::getWidth())] = pixel;
+	RGB_pixel_data[x + (y * getWidth())] = pixel;
 	//TODO: no comment needed :)
 }
 
@@ -62,7 +62,7 @@ void RGBImageStudent::setPixel(int i, RGB pixel) {
 }
 
 RGB RGBImageStudent::getPixel(int x, int y) const {
-	return RGB_pixel_data[x + (y * RGBImage::getWidth())];
+	return RGB_pixel_data[x + (y * getWidth())];
 }
 
 RGB RGBImageStudent::getPixel(int i) const {

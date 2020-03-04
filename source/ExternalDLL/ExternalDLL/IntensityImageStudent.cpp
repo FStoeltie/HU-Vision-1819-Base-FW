@@ -9,7 +9,7 @@ IntensityImageStudent::IntensityImageStudent(const IntensityImageStudent &other)
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: Create a copy from the other object
 	// Reserve of the luminosity vector to the amount of pixels from the given intensity image.
-	intensity_pixel_data.reserve(getWidth() * getHeight());
+	intensity_pixel_data = other.intensity_pixel_data;
 }
 
 IntensityImageStudent::IntensityImageStudent(const int width, const int height) : IntensityImage(width, height) {
