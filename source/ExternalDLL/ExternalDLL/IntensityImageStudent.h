@@ -6,6 +6,9 @@
 
 #pragma once
 #include "IntensityImage.h"
+#include "Algorithm.h"
+#include <vector>
+
 class IntensityImageStudent : public IntensityImage {
 public:
 	IntensityImageStudent();
@@ -21,4 +24,8 @@ public:
 
 	Intensity getPixel(int x, int y) const;
 	Intensity getPixel(int i) const;
+
+private:
+	std::vector<int_fast16_t> luminosity_pixel_data;
+
 };
