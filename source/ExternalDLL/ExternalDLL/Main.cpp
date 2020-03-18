@@ -13,6 +13,7 @@
 #include <windows.h>
 #include <Lmcons.h>
 
+#include <chrono>
 
 
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
@@ -81,12 +82,19 @@ int main(int argc, char * argv[]) {
 
 bool executeSteps(DLLExecution * executor) {
 
-	//Execute the four Pre-processing steps
-	if (!executor->executePreProcessingStep1(false)) {
-		std::cout << "Pre-processing step 1 failed!" << std::endl;
-		return false;
-	}
 
+	auto start_time = std::chrono::high_resolution_clock::now();
+	for (int i = 0; i < 500; i++)
+	{
+		//Execute the four Pre-processing steps
+		if (!executor->executePreProcessingStep1(true)) {
+			std::cout << "Pre-processing step 1 failed!" << std::endl;
+			return false;
+		}
+	}
+	auto end_time = std::chrono::high_resolution_clock::now();
+	auto runtime_duration = end_time - start_time;
+	std::cout << "Time of operation: " << runtime_duration.count() << std::endl;
 	if (!executor->executePreProcessingStep2(false)) {
 		std::cout << "Pre-processing step 2 failed!" << std::endl;
 		return false;
