@@ -3,28 +3,16 @@
 #include <fstream>
 
 RGBImageStudent::RGBImageStudent() : RGBImage() {
-	std::ofstream myfile;
-	myfile.open("example.txt");
-	myfile << "Writing this to a file.\n";
-	myfile.close();
 	//TODO: Nothing
 }
 
 RGBImageStudent::RGBImageStudent(const RGBImageStudent &other) : RGBImage(other.getWidth(), other.getHeight()) {
-	std::ofstream myfile;
-	myfile.open("example.txt");
-	myfile << "Writing this to a file.\n";
-	myfile.close();
 	RGB_pixel_data = other.RGB_pixel_data;
 	//TODO: Create a copy from the other object
 }
 
 
 RGBImageStudent::RGBImageStudent(const int width, const int height) : RGBImage(width, height) {
-	std::ofstream myfile;
-	myfile.open("example.txt");
-	myfile << "Writing this to a file.\n";
-	myfile.close();
 	RGB_pixel_data.reserve(width * height);
 	//TODO: Initialize pixel storage
 }
