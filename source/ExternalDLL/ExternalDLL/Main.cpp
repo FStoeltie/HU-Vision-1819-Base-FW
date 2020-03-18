@@ -15,7 +15,6 @@
 
 #include <chrono>
 
-
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
@@ -23,15 +22,14 @@ int main(int argc, char * argv[]) {
 
 	//ImageFactory::setImplementation(ImageFactory::DEFAULT);
 	ImageFactory::setImplementation(ImageFactory::STUDENT);
-	bool i_am_ole = false;
 
 	char username[UNLEN + 1];
 	DWORD username_len = UNLEN + 1;
 	GetUserName(username, &username_len);
 	std::string user_name = username;
 	//debugfolder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets"
-	std::string debug_folder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets";
-	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\child-1.png";
+	std::string debug_folder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\debug";
+	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\female-2.png";
 	
 	if (user_name.find("FerdiS") != std::string::npos) {
 		std::cout << "Hello Ferdi and welcome..." << std::endl;
@@ -40,7 +38,7 @@ int main(int argc, char * argv[]) {
 	}
 	
 	ImageIO::debugFolder = debug_folder;
-	ImageIO::isInDebugMode = false; //If set to false the ImageIO class will skip any image save function calls
+	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will skip any image save function calls
 
 
 
@@ -82,19 +80,39 @@ int main(int argc, char * argv[]) {
 
 bool executeSteps(DLLExecution * executor) {
 
-
-	auto start_time = std::chrono::high_resolution_clock::now();
-	for (int i = 0; i < 500; i++)
+	//Execute the four Pre-processing steps
+	std::cout << "false:" << std::endl;
+	for (size_t i = 0; i < 5; i++)
 	{
-		//Execute the four Pre-processing steps
-		if (!executor->executePreProcessingStep1(true)) {
-			std::cout << "Pre-processing step 1 failed!" << std::endl;
-			return false;
+		auto start_time = std::chrono::high_resolution_clock::now();
+		for (int j = 0; j < 300; j++)
+		{
+			if (!executor->executePreProcessingStep1(false)) {
+				std::cout << "Pre-processing step 1 failed!" << std::endl;
+				return false;
+			}
 		}
+		auto end_time = std::chrono::high_resolution_clock::now();
+		auto duration = end_time - start_time;
+		std::cout << "duration = " << duration.count() << std::endl;
+
 	}
-	auto end_time = std::chrono::high_resolution_clock::now();
-	auto runtime_duration = end_time - start_time;
-	std::cout << "Time of operation: " << runtime_duration.count() << std::endl;
+	std::cout << "true:" << std::endl;
+	for (size_t i = 0; i < 5; i++)
+	{
+		auto start_time = std::chrono::high_resolution_clock::now();
+		for (int j = 0; j < 300; j++)
+		{
+			if (!executor->executePreProcessingStep1(true)) {
+				std::cout << "Pre-processing step 1 failed!" << std::endl;
+				return false;
+			}
+		}
+		auto end_time = std::chrono::high_resolution_clock::now();
+		auto duration = end_time - start_time;
+		std::cout << "duration = " << duration.count() << std::endl;
+
+	}
 	if (!executor->executePreProcessingStep2(false)) {
 		std::cout << "Pre-processing step 2 failed!" << std::endl;
 		return false;
