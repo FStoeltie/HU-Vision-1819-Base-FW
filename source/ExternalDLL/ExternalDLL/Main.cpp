@@ -29,7 +29,7 @@ int main(int argc, char * argv[]) {
 	GetUserName(username, &username_len);
 	std::string user_name = username;
 	//debugfolder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets"
-	std::string debug_folder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets";
+	std::string debug_folder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\debug";
 	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\child-1.png";
 	
 	if (user_name.find("FerdiS") != std::string::npos) {

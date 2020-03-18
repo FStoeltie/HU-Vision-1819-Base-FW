@@ -2,7 +2,7 @@
 #include "IntensityImageStudent.h"
 
 IntensityImage * StudentPreProcessing::stepToIntensityImage(const RGBImage &image) const {
-	IntensityImageStudent* intensity = new IntensityImageStudent(image.getHeight(), image.getWidth());
+	IntensityImageStudent* intensity = new IntensityImageStudent(image.getWidth(), image.getHeight());
 	for (int w = 0; w < image.getWidth(); w++) {
 		for (int h = 0; h < image.getHeight(); h++) {
 			RGB curPixel = image.getPixel(w, h);
