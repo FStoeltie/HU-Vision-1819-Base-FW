@@ -10,6 +10,11 @@
 #include "ImageFactory.h"
 #include "DLLExecution.h"
 
+#include <windows.h>
+#include <Lmcons.h>
+
+
+
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
@@ -17,16 +22,30 @@ int main(int argc, char * argv[]) {
 
 	//ImageFactory::setImplementation(ImageFactory::DEFAULT);
 	ImageFactory::setImplementation(ImageFactory::STUDENT);
+	bool i_am_ole = false;
 
-
-	ImageIO::debugFolder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets";
+	char username[UNLEN + 1];
+	DWORD username_len = UNLEN + 1;
+	GetUserName(username, &username_len);
+	std::string user_name = username;
+	//debugfolder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets"
+	std::string debug_folder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets";
+	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\child-1.png";
+	
+	if (user_name.find("FerdiS") != std::string::npos) {
+		std::cout << "Hello Ferdi and welcome..." << std::endl;
+		debug_folder = "C:\\HBO\\leerjaar_2\\Vision2020\\testsets\\Set A\\TestSet Images\\";
+		load_image = "C:\\HBO\\leerjaar_2\\Vision2020\\testsets\\Set A\\TestSet Images\\child-1.png";
+	}
+	
+	ImageIO::debugFolder = debug_folder;
 	ImageIO::isInDebugMode = false; //If set to false the ImageIO class will skip any image save function calls
 
 
 
 
 	RGBImage * input = ImageFactory::newRGBImage();
-	if (!ImageIO::loadImage("C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\child-1.png", *input)) {
+	if (!ImageIO::loadImage(load_image, *input)) {
 		std::cout << "Image could not be loaded!" << std::endl;
 		system("pause");
 		return 0;
