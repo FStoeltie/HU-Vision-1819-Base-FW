@@ -85,7 +85,7 @@ bool executeSteps(DLLExecution * executor) {
 	for (size_t i = 0; i < 5; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 500; j++)
 		{
 			if (!executor->executePreProcessingStep1(false)) {
 				std::cout << "Pre-processing step 1 failed!" << std::endl;
@@ -101,7 +101,7 @@ bool executeSteps(DLLExecution * executor) {
 	for (size_t i = 0; i < 5; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 500; j++)
 		{
 			if (!executor->executePreProcessingStep1(true)) {
 				std::cout << "Pre-processing step 1 failed!" << std::endl;
