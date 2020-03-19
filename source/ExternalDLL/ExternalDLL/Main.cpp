@@ -29,7 +29,7 @@ int main(int argc, char * argv[]) {
 	std::string user_name = username;
 	//debugfolder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets"
 	std::string debug_folder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\debug";
-	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\female-2.png";
+	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\unnamed.jpg";
 	
 	if (user_name.find("FerdiS") != std::string::npos) {
 		std::cout << "Hello Ferdi and welcome..." << std::endl;
@@ -81,27 +81,11 @@ int main(int argc, char * argv[]) {
 bool executeSteps(DLLExecution * executor) {
 
 	//Execute the four Pre-processing steps
-	std::cout << "false:" << std::endl;
+	std::cout << "Student:" << std::endl;
 	for (size_t i = 0; i < 5; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 300; j++)
-		{
-			if (!executor->executePreProcessingStep1(false)) {
-				std::cout << "Pre-processing step 1 failed!" << std::endl;
-				return false;
-			}
-		}
-		auto end_time = std::chrono::high_resolution_clock::now();
-		auto duration = end_time - start_time;
-		std::cout << "duration = " << duration.count() << std::endl;
-
-	}
-	std::cout << "true:" << std::endl;
-	for (size_t i = 0; i < 5; i++)
-	{
-		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 300; j++)
+		for (int j = 0; j < 500; j++)
 		{
 			if (!executor->executePreProcessingStep1(true)) {
 				std::cout << "Pre-processing step 1 failed!" << std::endl;
@@ -110,7 +94,23 @@ bool executeSteps(DLLExecution * executor) {
 		}
 		auto end_time = std::chrono::high_resolution_clock::now();
 		auto duration = end_time - start_time;
-		std::cout << "duration = " << duration.count() << std::endl;
+		std::cout << duration.count() << std::endl;
+
+	}
+	std::cout << "Default:" << std::endl;
+	for (size_t i = 0; i < 5; i++)
+	{
+		auto start_time = std::chrono::high_resolution_clock::now();
+		for (int j = 0; j < 500; j++)
+		{
+			if (!executor->executePreProcessingStep1(false)) {
+				std::cout << "Pre-processing step 1 failed!" << std::endl;
+				return false;
+			}
+		}
+		auto end_time = std::chrono::high_resolution_clock::now();
+		auto duration = end_time - start_time;
+		std::cout << duration.count() << std::endl;
 
 	}
 	if (!executor->executePreProcessingStep2(false)) {
