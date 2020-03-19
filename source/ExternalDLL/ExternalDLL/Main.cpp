@@ -85,7 +85,7 @@ bool executeSteps(DLLExecution * executor) {
 	for (size_t i = 0; i < 5; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 300; j++)
+		for (int j = 0; j < 5; j++)
 		{
 			if (!executor->executePreProcessingStep1(false)) {
 				std::cout << "Pre-processing step 1 failed!" << std::endl;
@@ -94,14 +94,14 @@ bool executeSteps(DLLExecution * executor) {
 		}
 		auto end_time = std::chrono::high_resolution_clock::now();
 		auto duration = end_time - start_time;
-		std::cout << "duration = " << duration.count() << std::endl;
+		std::cout << "" << duration.count() << std::endl;
 
 	}
 	std::cout << "true:" << std::endl;
 	for (size_t i = 0; i < 5; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 300; j++)
+		for (int j = 0; j < 5; j++)
 		{
 			if (!executor->executePreProcessingStep1(true)) {
 				std::cout << "Pre-processing step 1 failed!" << std::endl;
@@ -110,7 +110,7 @@ bool executeSteps(DLLExecution * executor) {
 		}
 		auto end_time = std::chrono::high_resolution_clock::now();
 		auto duration = end_time - start_time;
-		std::cout << "duration = " << duration.count() << std::endl;
+		std::cout << "" << duration.count() << std::endl;
 
 	}
 	if (!executor->executePreProcessingStep2(false)) {
