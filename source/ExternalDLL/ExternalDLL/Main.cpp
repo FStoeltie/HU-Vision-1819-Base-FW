@@ -29,7 +29,7 @@ int main(int argc, char * argv[]) {
 	std::string user_name = username;
 	//debugfolder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets"
 	std::string debug_folder = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\debug";
-	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\unnamed.jpg";
+	std::string load_image = "C:\\Users\\Gebruiker\\Documents\\Git\\HU-Vision-1819-Base-FW-OF\\testsets\\Set A\\TestSet Images\\animal-1.jpg";
 	
 	if (user_name.find("FerdiS") != std::string::npos) {
 		std::cout << "Hello Ferdi and welcome..." << std::endl;
@@ -79,13 +79,13 @@ int main(int argc, char * argv[]) {
 
 
 bool executeSteps(DLLExecution * executor) {
-
+	int times = 10;
 	//Execute the four Pre-processing steps
 	std::cout << "Student:" << std::endl;
 	for (size_t i = 0; i < 5; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 500; j++)
+		for (int j = 0; j < times; j++)
 		{
 			if (!executor->executePreProcessingStep1(true)) {
 				std::cout << "Pre-processing step 1 failed!" << std::endl;
@@ -99,9 +99,10 @@ bool executeSteps(DLLExecution * executor) {
 	}
 	std::cout << "Default:" << std::endl;
 	for (size_t i = 0; i < 5; i++)
+
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
-		for (int j = 0; j < 500; j++)
+		for (int j = 0; j < times; j++)
 		{
 			if (!executor->executePreProcessingStep1(false)) {
 				std::cout << "Pre-processing step 1 failed!" << std::endl;

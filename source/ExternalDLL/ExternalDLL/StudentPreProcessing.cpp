@@ -8,7 +8,7 @@ IntensityImage * StudentPreProcessing::stepToIntensityImage(const RGBImage &imag
 
 
 	// Pass f and its parameters to thread  
-	// object constructor as 
+	// object constructor as  
 	auto f = [](int startx, int starty, int stopx, int stopy, IntensityImageStudent* intensity, const RGBImage & image) {
 		// Do Something 
 		for (int w = startx; w < stopx; w++) {
@@ -20,7 +20,7 @@ IntensityImage * StudentPreProcessing::stepToIntensityImage(const RGBImage &imag
 			}
 		}
 	};
-	bool threading = true;
+	bool threading = false;
 
 	if (!threading) {
 		f(0, 0, image.getWidth(), image.getHeight(), intensity, image);
