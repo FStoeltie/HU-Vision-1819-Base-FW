@@ -20,7 +20,7 @@ IntensityImage * StudentPreProcessing::stepToIntensityImage(const RGBImage &imag
 			}
 		}
 	};
-	bool threading = true;
+	bool threading = false;
 
 	if (!threading) {
 		f(0, 0, image.getWidth(), image.getHeight(), intensity, image);

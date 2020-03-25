@@ -34,7 +34,7 @@ int main(int argc, char * argv[]) {
 	if (user_name.find("FerdiS") != std::string::npos) {
 		std::cout << "Hello Ferdi and welcome..." << std::endl;
 		debug_folder = "C:\\HBO\\leerjaar_2\\Vision2020\\testsets\\Set A\\TestSet Images\\";
-		load_image = "C:\\HBO\\leerjaar_2\\Vision2020\\testsets\\Set A\\TestSet Images\\child-1.png";
+		load_image = "C:\\HBO\\leerjaar_2\\Vision2020\\testsets\\Set A\\TestSet Images\\unnamed.jpg";
 	}
 	
 	ImageIO::debugFolder = debug_folder;
@@ -82,7 +82,7 @@ bool executeSteps(DLLExecution * executor) {
 
 	//Execute the four Pre-processing steps
 	std::cout << "Student:" << std::endl;
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 0; i < 10; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
 		for (int j = 0; j < 500; j++)
@@ -98,7 +98,7 @@ bool executeSteps(DLLExecution * executor) {
 
 	}
 	std::cout << "Default:" << std::endl;
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 0; i < 10; i++)
 	{
 		auto start_time = std::chrono::high_resolution_clock::now();
 		for (int j = 0; j < 500; j++)
